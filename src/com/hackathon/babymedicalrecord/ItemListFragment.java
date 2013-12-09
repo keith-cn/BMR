@@ -1,7 +1,5 @@
 package com.hackathon.babymedicalrecord;
 
-import static com.microsoft.windowsazure.mobileservices.MobileServiceQueryOperations.val;
-
 import java.util.List;
 
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
@@ -90,7 +88,7 @@ public class ItemListFragment extends ListFragment {
 		mBMRData = BMRUtil.getBMRDataTable();
 		
 		// Create an adapter to bind the items with the view
-		mAdapter = new BMRDataAdapter(getActivity(), android.R.layout.simple_list_item_activated_1);
+		mAdapter = new BMRDataAdapter(getActivity(), android.R.layout.two_line_list_item);
 		setListAdapter(mAdapter);
 		
 		// Load the items from the Mobile Service

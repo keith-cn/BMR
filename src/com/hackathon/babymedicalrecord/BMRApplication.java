@@ -10,6 +10,6 @@ public class BMRApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MobclickAgent.setDebugMode( true );
+
     }
 }

@@ -51,7 +51,7 @@ public class BMRDataAdapter extends ArrayAdapter<BMRData> {
 		final TextView text2 = (TextView) row.findViewById(android.R.id.text2);
 		
 		text1.setText(currentItem.getSymptomName());
-		text1.setText(currentItem.getSymptomTemperature());
+		text2.setText(currentItem.getHospital());
 		
 //		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkBMRData);
 //		checkBox.setText(currentItem.getText());

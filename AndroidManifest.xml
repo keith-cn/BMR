@@ -19,7 +19,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.hackathon.babymedicalrecord.BMRLoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,19 +29,23 @@
         </activity>
         <activity
             android:name="BMRUserRegisterActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="BMRMainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="ItemListActivity"
-            android:label="@string/title_section1" >
+            android:label="@string/title_section1"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="ItemDetailActivity"
             android:label="@string/title_item_detail"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ItemListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,7 +53,8 @@
         </activity>
         <activity
             android:name="BMRDataAddActivity"
-            android:label="@string/add" >
+            android:label="@string/add"
+            android:screenOrientation="portrait" >
         </activity>
 
         <meta-data

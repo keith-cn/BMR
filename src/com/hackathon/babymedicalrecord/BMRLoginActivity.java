@@ -65,8 +65,6 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 		((Button) findViewById(R.id.login_btn)).setOnClickListener(this);
 		((Button) findViewById(R.id.register_btn)).setOnClickListener(this);
 
-		MobclickAgent.setDebugMode(true);
-
 		// hide the action bar icon
 		// getActionBar().setIcon(R.drawable.fake_action_icon);
 		ActionBar actionBar = getActionBar();
