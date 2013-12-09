@@ -59,6 +59,5 @@
             android:name="UMENG_CHANNEL"
             android:value="Hankathon" />
     </application>
-    
 
 </manifest>
