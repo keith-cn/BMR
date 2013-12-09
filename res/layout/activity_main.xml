@@ -1,0 +1,43 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BMRMainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/main_myrecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:text="@string/title_section1" />
+
+        <Button
+            android:id="@+id/main_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/main_myrecord"
+            android:layout_below="@+id/main_myrecord"
+            android:layout_marginTop="31dp"
+            android:text="@string/title_section2" />
+
+        <Button
+            android:id="@+id/main_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/main_search"
+            android:layout_below="@+id/main_search"
+            android:layout_marginTop="23dp"
+            android:text="@string/title_section3" />
+
+    </RelativeLayout>
+
+</FrameLayout>
+

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NavPage" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26.0dip"
+        android:background="@drawable/preference_first_item" >
+
+        <EditText
+            android:id="@+id/login_account"
+            style="@style/BMRLineEditText"
+            android:background="@null"
+            android:hint="@string/login_account_hint"
+            android:paddingLeft="85.0dip" />
+
+        <TextView
+            style="@style/BMRLineEditText"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bmr_trans"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="10.0dip"
+            android:singleLine="false"
+            android:text="@string/login_account"
+            android:textColor="@color/black"
+            android:textSize="16.0dip" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/preference_last_item" >
+
+        <EditText
+            android:id="@+id/login_password"
+            style="@style/BMRLineEditPass"
+            android:background="@null"
+            android:hint="@string/login_password_hint"
+            android:paddingLeft="85.0dip" />
+
+        <TextView
+            style="@style/BMRLineEditText"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bmr_trans"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical"
+            android:imeOptions="actionDone"
+            android:paddingLeft="10.0dip"
+            android:singleLine="false"
+            android:text="@string/login_password_hint"
+            android:textColor="@color/black"
+            android:textSize="16.0dip" />
+    </FrameLayout>
+
+    <View style="@style/MMLabelSplit" />
+    <!--
+    <RelativeLayout
+        style="@style/MMBlock"
+        android:orientation="horizontal"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip" >
+    	<Button
+            android:id="@+id/register_btn"
+            style="@style/RegUIHyperText"
+            android:layout_gravity="bottom|left|center"
+            android:text="@string/register" />
+    </RelativeLayout> -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip" >
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18.0dip"
+            android:background="@drawable/login_btn"
+            android:shadowColor="#ff000000"
+            android:shadowDx="1.2"
+            android:shadowDy="1.2"
+            android:shadowRadius="1.0"
+            android:text="@string/login_login"
+            android:textColor="@color/login_btn_text"
+            android:textSize="@dimen/TitleTextSize" />
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18.0dip"
+            android:background="@drawable/register_btn"
+            android:shadowColor="#fff5f5f5"
+            android:shadowDx="1.2"
+            android:shadowDy="1.2"
+            android:shadowRadius="1.0"
+            android:text="@string/register"
+            android:textColor="#ff5c5c5c"
+            android:textSize="@dimen/TitleTextSize" />
+    </LinearLayout>
+
+</LinearLayout>

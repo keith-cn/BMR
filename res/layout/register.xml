@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.39" >
+
+        <TextView
+            android:id="@+id/reg_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/reg_name" />
+
+        <EditText
+            android:id="@+id/reg_name_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reg_name"
+            android:layout_alignBottom="@+id/reg_name"
+            android:layout_marginLeft="34dp"
+            android:layout_toRightOf="@+id/reg_name"
+            android:ems="10"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/reg_password_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reg_name_edit"
+            android:layout_below="@+id/reg_name_edit"
+            android:layout_marginTop="21dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/reg_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/reg_password_edit"
+            android:layout_toLeftOf="@+id/reg_name_edit"
+            android:text="@string/reg_password" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="18dp"
+            android:text="@string/reg_gender" />
+
+        <EditText
+            android:id="@+id/reg_baby_name_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_alignLeft="@+id/reg_password_edit"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <RadioGroup
+            android:id="@+id/reg_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reg_baby_name_edit"
+            android:layout_alignTop="@+id/textView2" >
+
+            <RadioButton
+                android:id="@+id/reg_boy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/reg_boy" />
+
+            <RadioButton
+                android:id="@+id/reg_girl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reg_girl" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/reg_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reg_gender"
+            android:layout_marginTop="22dp"
+            android:layout_toLeftOf="@+id/reg_name_edit"
+            android:text="@string/reg_birthday" />
+
+        <Button
+            android:id="@+id/reg_birthday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/reg_birthday"
+            android:layout_alignBottom="@+id/reg_birthday"
+            android:layout_alignLeft="@+id/reg_gender"
+            android:text="@string/reg_birthday_btn" />
+
+        <Button
+            android:id="@+id/reg_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reg_birthday_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="53dp"
+            android:text="@android:string/ok" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/reg_password"
+            android:layout_below="@+id/reg_password"
+            android:layout_marginTop="33dp"
+            android:text="@string/reg_baby_name" />
+
+    </RelativeLayout>
+
+</LinearLayout>
