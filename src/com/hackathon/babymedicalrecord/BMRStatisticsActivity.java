@@ -71,7 +71,7 @@ public class BMRStatisticsActivity extends Activity implements
 
 	private void initFrameView() {
 		findViewById(R.id.monthly_linerlayout).setOnClickListener(this);
-		findViewById(R.id.sta_disease_liner).setOnClickListener(this);
+		findViewById(R.id.disease_linerlayout).setOnClickListener(this);
 		initChartView();
 	}
 

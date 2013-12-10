@@ -97,12 +97,12 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 			}
 			
 			// TODO for develop
-			//verifyUser(); 
+			verifyUser(); 
 			// start Activity
-			Intent i = new Intent(
-					BMRLoginActivity.this,
-					BMRMainActivity.class);
-			startActivity(i);
+//			Intent i = new Intent(
+//					BMRLoginActivity.this,
+//					BMRMainActivity.class);
+//			startActivity(i);
 
 		} else if (v.getId() == R.id.register_btn) {
 			// start Activity
