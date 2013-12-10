@@ -10,4 +10,6 @@
     
     
     <dimen name="TitleTextSize">18.0dip</dimen>
+    
+    <dimen name="text_small">12.0sp</dimen>
 </resources>

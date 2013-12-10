@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffd3d3d3"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffeeefef"
+        android:scrollbars="vertical" >
+        
+        
+
+        <LinearLayout
+            android:id="@+id/todaydata_gesture"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="30.0dip" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffeeefef"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/today_installations"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.0dip"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/textColor"
+                    android:textIsSelectable="true"
+                    android:textSize="12.0sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_marginTop="4.0dip"
+                    android:background="#ffcccccc" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:background="#ffffffff" />
+            </LinearLayout>
+
+            
+        <LinearLayout
+                    android:id="@+id/monthly_linerlayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="100.0dip"
+                    android:layout_marginBottom="14.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:background="@drawable/product_detail_item_bg"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="3.5"
+                            android:orientation="vertical" >
+
+                            <LinearLayout
+                                android:id="@+id/sta_num_monthly_linear"
+                                style="@style/dashboard_item_chart"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_marginBottom="-9.299988dip"
+                                android:layout_marginLeft="10.0dip"
+                                android:layout_marginRight="10.0dip"
+                                android:layout_marginTop="10.0dip"
+                            	android:orientation="vertical" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="2.0"
+                            android:orientation="vertical" >
+
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10.0dip"
+                                android:layout_marginTop="10.0dip"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" >
+
+                                <ImageView
+                                    style="@style/dashboard__item_icon"
+                                    android:layout_width="13.0dip"
+                                    android:layout_height="15.0dip"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="8.0dip"
+                                    android:src="@drawable/time_icon" />
+
+                                <TextView
+                                    style="@style/dashboard_item_title"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="7.0dip"
+                                    android:text="@string/num_monthly"
+                                    android:textSize="10.0sp" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="2.0dip"
+                                android:layout_marginTop="3.0dip"
+                                android:gravity="right"
+                                android:orientation="horizontal"
+                                android:paddingRight="10.0dip" >
+
+                                <TextView
+                                    android:id="@+id/title"
+                                    style="@style/dashboard_item_number_yesterday"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="7, 8, 9"
+                                    android:textColor="#ff51bcbf"
+                                    android:textIsSelectable="false"
+                                    android:textSize="20.0sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="4.0dip"
+                                android:layout_marginTop="3.0dip"
+                                android:gravity="right"
+                                android:orientation="horizontal"
+                                android:paddingRight="10.0dip" >
+
+                                <TextView
+                                    style="@style/dashboard_item_number_yesterday"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="@string/ill_top_months"
+                                    android:textColor="@color/textColor"
+                                    android:textIsSelectable="false"
+                                    android:textSize="11.0sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/disease_linerlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="100.0dip"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:background="@drawable/product_detail_item_bg"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3.5"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/sta_disease_liner"
+                        style="@style/dashboard_item_chart"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="0.0dip"
+                        android:layout_marginTop="10.0dip"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2.0"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            style="@style/dashboard__item_icon"
+                            android:layout_marginLeft="5.0dip"
+                            android:src="@drawable/new_users" />
+
+                        <TextView
+                            style="@style/dashboard_item_title"
+                            android:text="@string/num_illness"
+                            android:textSize="10.0sp" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:paddingRight="8.0dip" >
+
+                        <ImageView
+                            android:id="@+id/yesterday_image_2"
+                            style="@style/dashboard_item_icon_day"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/today_mark" />
+
+                        <TextView
+                            android:id="@+id/todaydata_newuser_text_1"
+                            style="@style/dashboard_item_number_today"
+                            android:layout_toLeftOf="@id/yesterday_image_2"
+                            android:ellipsize="end"
+                            android:maxLength="10"
+                            android:singleLine="true"
+                            android:textIsSelectable="true" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:paddingRight="8.0dip" >
+
+                        <ImageView
+                            android:id="@+id/yesterday_image_1"
+                            style="@style/dashboard_item_icon_day"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/yesterday_mark" />
+
+                        <TextView
+                            android:id="@+id/yesterdaydata_newuser_text"
+                            style="@style/dashboard_item_number_yesterday"
+                            android:layout_toLeftOf="@id/yesterday_image_1"
+                            android:ellipsize="end"
+                            android:maxLength="10"
+                            android:singleLine="true"
+                            android:textIsSelectable="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5.0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="18.0dip" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="18.0dip" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_marginTop="12.0dip"
+                    android:background="#ffcccccc" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:background="#ffffffff" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_marginTop="4.0dip"
+                    android:background="#ffcccccc" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:background="#ffffffff" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

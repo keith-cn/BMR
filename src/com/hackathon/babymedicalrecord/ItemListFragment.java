@@ -88,7 +88,7 @@ public class ItemListFragment extends ListFragment {
 		mBMRData = BMRUtil.getBMRDataTable();
 		
 		// Create an adapter to bind the items with the view
-		mAdapter = new BMRDataAdapter(getActivity(), android.R.layout.two_line_list_item);
+		mAdapter = new BMRDataAdapter(getActivity(), android.R.layout.simple_list_item_2);
 		setListAdapter(mAdapter);
 		
 		// Load the items from the Mobile Service
@@ -173,11 +173,11 @@ public class ItemListFragment extends ListFragment {
 	/**
 	 * Refresh the list with the items in the Mobile Service Table
 	 */
-	private void refreshItemsFromTable() {
+	public void refreshItemsFromTable() {
 
 		// Get the items that weren't marked as completed and add them in the
 		// adapter
-		mBMRData.where().execute(new TableQueryCallback<BMRData>() {
+		mBMRData.where().field("name").eq(BMRLoginActivity.userName).execute(new TableQueryCallback<BMRData>() {
 
 			public void onCompleted(List<BMRData> result, int count, Exception exception, ServiceFilterResponse response) {
 				if (exception == null) {

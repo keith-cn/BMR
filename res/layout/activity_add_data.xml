@@ -4,179 +4,188 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.76" >
+        android:layout_weight="0.60"
+        android:background="#ffeeefef"
+        android:scrollbars="vertical" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/date" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="474dp"
+            android:layout_weight="0.76" >
 
-        <Button
-            android:id="@+id/date_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView1"
-            android:layout_alignBottom="@+id/textView1"
-            android:layout_centerHorizontal="true"
-            android:text="@string/select_date" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="28dp"
+                android:text="@string/date" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView1"
-            android:layout_below="@+id/date_btn"
-            android:layout_marginTop="18dp"
-            android:text="@string/symptom_name" />
+            <Button
+                android:id="@+id/date_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView1"
+                android:layout_alignBottom="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:text="@string/select_date" />
 
-        <EditText
-            android:id="@+id/symptom_name_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/date_btn"
-            android:layout_toRightOf="@+id/textView2"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/date_btn"
+                android:layout_marginTop="18dp"
+                android:text="@string/symptom_name" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_below="@+id/symptom_name_edit"
-            android:layout_marginTop="20dp"
-            android:text="@string/temperature" />
+            <EditText
+                android:id="@+id/symptom_name_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date_btn"
+                android:layout_toRightOf="@+id/textView2"
+                android:ems="10" />
 
-        <EditText
-            android:id="@+id/temperature_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView3"
-            android:layout_toRightOf="@+id/textView2"
-            android:ems="10"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_below="@+id/symptom_name_edit"
+                android:layout_marginTop="20dp"
+                android:text="@string/temperature" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView3"
-            android:layout_below="@+id/textView3"
-            android:layout_marginTop="20dp"
-            android:text="@string/hospital" />
+            <EditText
+                android:id="@+id/temperature_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView3"
+                android:layout_toRightOf="@+id/textView2"
+                android:ems="10"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/hospital_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView4"
-            android:layout_toRightOf="@+id/textView2"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView3"
+                android:layout_below="@+id/textView3"
+                android:layout_marginTop="20dp"
+                android:text="@string/hospital" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_below="@+id/textView4"
-            android:layout_marginTop="19dp"
-            android:text="@string/doctor" />
+            <EditText
+                android:id="@+id/hospital_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_toRightOf="@+id/textView2"
+                android:ems="10" />
 
-        <EditText
-            android:id="@+id/doctor_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView5"
-            android:layout_alignParentRight="true"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_below="@+id/textView4"
+                android:layout_marginTop="19dp"
+                android:text="@string/doctor" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView5"
-            android:layout_below="@+id/textView5"
-            android:layout_marginTop="16dp"
-            android:text="@string/cost" />
+            <EditText
+                android:id="@+id/doctor_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView5"
+                android:layout_alignParentRight="true"
+                android:ems="10" />
 
-        <EditText
-            android:id="@+id/cost_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView6"
-            android:layout_alignLeft="@+id/date_btn"
-            android:inputType="numberDecimal"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView5"
+                android:layout_below="@+id/textView5"
+                android:layout_marginTop="16dp"
+                android:text="@string/cost" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView6"
-            android:layout_below="@+id/textView6"
-            android:layout_marginTop="14dp"
-            android:text="@string/medicine" />
+            <EditText
+                android:id="@+id/cost_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView6"
+                android:layout_alignLeft="@+id/date_btn"
+                android:ems="10"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/medicine_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView7"
-            android:layout_toRightOf="@+id/textView3"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView6"
+                android:layout_below="@+id/textView6"
+                android:layout_marginTop="14dp"
+                android:text="@string/medicine" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/textView7"
-            android:layout_below="@+id/textView7"
-            android:layout_marginTop="24dp"
-            android:text="@string/diagnosis" />
+            <EditText
+                android:id="@+id/medicine_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView7"
+                android:layout_toRightOf="@+id/textView3"
+                android:ems="10" />
 
-        <EditText
-            android:id="@+id/diagnosis_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView8"
-            android:layout_toRightOf="@+id/textView3"
-            android:ems="10"
-            android:inputType="textMultiLine" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/textView7"
+                android:layout_below="@+id/textView7"
+                android:layout_marginTop="24dp"
+                android:text="@string/diagnosis" />
 
-        <Button
-            android:id="@+id/add_data_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
-            android:text="@android:string/ok" />
+            <EditText
+                android:id="@+id/diagnosis_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView8"
+                android:layout_toRightOf="@+id/textView3"
+                android:ems="10"
+                android:inputType="textMultiLine" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/add_data_ok"
-            android:layout_alignLeft="@+id/textView8"
-            android:layout_marginBottom="18dp"
-            android:text="@string/others" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView8"
+                android:layout_below="@+id/diagnosis_edit"
+                android:layout_marginTop="20dp"
+                android:text="@string/others" />
 
-        <EditText
-            android:id="@+id/others"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView9"
-            android:layout_alignBottom="@+id/textView9"
-            android:layout_alignLeft="@+id/cost_edit"
-            android:ems="10" />
+            <EditText
+                android:id="@+id/others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView9"
+                android:layout_alignBottom="@+id/textView9"
+                android:layout_toRightOf="@+id/textView3"
+                android:ems="10" />
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/add_data_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/doctor_edit"
+                android:layout_below="@+id/others"
+                android:layout_marginTop="22dp"
+                android:text="@android:string/ok" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </LinearLayout>

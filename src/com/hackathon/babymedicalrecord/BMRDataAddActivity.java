@@ -11,6 +11,7 @@ import com.microsoft.windowsazure.mobileservices.ServiceFilterRequest;
 import com.microsoft.windowsazure.mobileservices.ServiceFilterResponse;
 import com.microsoft.windowsazure.mobileservices.ServiceFilterResponseCallback;
 import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -63,6 +64,18 @@ public class BMRDataAddActivity extends Activity implements
 
 		noteCalendar = Calendar.getInstance();
 		setDateListener(mDate);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	@Override

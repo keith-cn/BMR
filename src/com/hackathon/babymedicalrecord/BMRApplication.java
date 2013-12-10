@@ -1,15 +1,20 @@
 package com.hackathon.babymedicalrecord;
 
-import com.umeng.analytics.MobclickAgent;
-
 import android.app.Application;
 
 public class BMRApplication extends Application {
 
+	public static int height = 0;
+	public static int width = 0;
+	private static BMRApplication instance;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+	public static BMRApplication getInstance() {
+		return instance;
+	}
 
-    }
+	@Override
+	public void onCreate() {
+		super.onCreate();
+
+	}
 }

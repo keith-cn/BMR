@@ -32,6 +32,7 @@ public class ItemListActivity extends FragmentActivity implements
 	 * device.
 	 */
 	private boolean mTwoPane;
+	private ItemListFragment mItemListFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,9 @@ public class ItemListActivity extends FragmentActivity implements
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
-			((ItemListFragment) getSupportFragmentManager().findFragmentById(
-					R.id.item_list)).setActivateOnItemClick(true);
+			mItemListFragment = ((ItemListFragment) getSupportFragmentManager().findFragmentById(
+					R.id.item_list));
+			mItemListFragment.setActivateOnItemClick(true);
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
@@ -109,6 +111,8 @@ public class ItemListActivity extends FragmentActivity implements
 				startActivity(i);
 	            return true;
 	        case R.id.action_refresh:
+	        	// refresh
+	        	mItemListFragment.refreshItemsFromTable();
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

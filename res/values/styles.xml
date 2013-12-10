@@ -79,4 +79,53 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
     
+    <style name="dashboard_item_chart">
+        <item name="android:layout_width">130.0dip</item>
+        <item name="android:layout_height">50.0dip</item>
+        <item name="android:layout_marginLeft">32.0dip</item>
+    </style>
+    <style name="dashboard__item_icon">
+        <item name="android:layout_width">10.0dip</item>
+        <item name="android:layout_height">10.0dip</item>
+        <item name="android:layout_marginLeft">17.0dip</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+    <style name="dashboard_item_title" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">5.0dip</item>
+    </style>
+    <style name="dashboard_item_icon_day">
+        <item name="android:layout_width">20.0dip</item>
+        <item name="android:layout_height">25.0dip</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+    <style name="dashboard_item_number_today" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">#ff51bcbf</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">5.0dip</item>
+        <item name="android:textScaleX">0.8</item>
+    </style>
+    <style name="dashboard_item_number_yesterday" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">#ffc2c6ca</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">5.0dip</item>
+        <item name="android:textScaleX">0.8</item>
+    </style>
+    <style name="table_title_textview">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textColor">#ffefefef</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowDx">1.0</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+    
 </resources>

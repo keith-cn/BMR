@@ -8,6 +8,7 @@ import com.microsoft.windowsazure.mobileservices.ServiceFilter;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 
 public class BMRUtil {
 
@@ -15,6 +16,22 @@ public class BMRUtil {
 	public final static String SERVICE_URL = "https://babymedicalrecord.azure-mobile.net/";
 	public static MobileServiceTable<BMRUser> mBMRUser;
 	public static MobileServiceTable<BMRData> mBMRData;
+	public static final int[] COLORS;
+
+	static {
+		int[] colors = new int[10];
+		colors[0] = Color.parseColor("#4ec0c3");
+		colors[1] = Color.parseColor("#dee2e5");
+		colors[2] = Color.parseColor("#ab497f");
+		colors[3] = Color.parseColor("#ef8032");
+		colors[4] = Color.parseColor("#fed246");
+		colors[5] = Color.parseColor("#393b38");
+		colors[6] = Color.parseColor("#75d3ff");
+		colors[7] = Color.parseColor("#ffffff");
+		colors[8] = Color.parseColor("#ffffff");
+		colors[9] = Color.parseColor("#ffffff");
+		COLORS = colors;
+	}
 
 	public static MobileServiceClient getMobileService(Context context,
 			ServiceFilter filter) {
@@ -26,7 +43,7 @@ public class BMRUtil {
 				mClient = new MobileServiceClient(SERVICE_URL,
 						"HiboUWjGJdFYYBHsmWUYfaSPvjtdZZ89", context)
 						.withFilter(filter);
-			} 
+			}
 		} catch (MalformedURLException e) {
 			BMRUtil.createAndShowDialog(
 					new Exception(
@@ -36,8 +53,8 @@ public class BMRUtil {
 		return mClient;
 	}
 
-	public static <E> MobileServiceTable<E> getMobileTable(MobileServiceClient client,
-			Class<E> clazz) {
+	public static <E> MobileServiceTable<E> getMobileTable(
+			MobileServiceClient client, Class<E> clazz) {
 
 		if (mClient == null) {
 			return null;
@@ -45,23 +62,21 @@ public class BMRUtil {
 		// Get the Mobile Service Table instance to use
 		return client.getTable(clazz);
 	}
-	
-	public static MobileServiceTable<BMRUser> getBMRUserTable()
-	{
+
+	public static MobileServiceTable<BMRUser> getBMRUserTable() {
 		if (mClient == null) {
 			return null;
 		}
-		
+
 		mBMRUser = getMobileTable(mClient, BMRUser.class);
 		return mBMRUser;
 	}
-	
-	public static MobileServiceTable<BMRData> getBMRDataTable()
-	{
+
+	public static MobileServiceTable<BMRData> getBMRDataTable() {
 		if (mClient == null) {
 			return null;
 		}
-		
+
 		mBMRData = getMobileTable(mClient, BMRData.class);
 		return mBMRData;
 	}

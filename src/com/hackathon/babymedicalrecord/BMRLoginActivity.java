@@ -95,8 +95,14 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 						"Babay Medical Record", this);
 				return;
 			}
-
-			verifyUser();
+			
+			// TODO for develop
+			//verifyUser(); 
+			// start Activity
+			Intent i = new Intent(
+					BMRLoginActivity.this,
+					BMRMainActivity.class);
+			startActivity(i);
 
 		} else if (v.getId() == R.id.register_btn) {
 			// start Activity

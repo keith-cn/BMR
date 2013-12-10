@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/addapplistview_1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffffff"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" />
+
+    <RelativeLayout
+        android:layout_width="0.0dip"
+        android:layout_height="40.0dip"
+        android:layout_weight="0.6" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:lineSpacingExtra="-3.5dip"
+            android:textColor="@color/textColor"
+            android:textIsSelectable="false"
+            android:textScaleX="0.8"
+            android:textSize="14.0sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0.0dip"
+        android:layout_weight="0.8" >
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="40.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textIsSelectable="false"
+            android:textScaleX="0.8"
+            android:textSize="18.0sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0" >
+
+        <TextView
+            android:id="@+id/percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="40.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textIsSelectable="false"
+            android:textScaleX="0.8"
+            android:textSize="18.0sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" />
+
+</LinearLayout>

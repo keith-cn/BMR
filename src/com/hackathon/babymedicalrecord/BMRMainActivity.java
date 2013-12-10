@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,20 +33,38 @@ public class BMRMainActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		findViewById(R.id.main_myrecord).setOnClickListener(new OnClickListener(){
 
-			@Override
-			public void onClick(View v) {
+		loadScreenWidthAndHeight();
 
-				// start Activity
-				Intent i = new Intent(BMRMainActivity.this,
-						ItemListActivity.class);
-				startActivity(i);
-				
-			}
-			
-		});
+		findViewById(R.id.main_myrecord).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+						// start Activity
+						Intent i = new Intent(BMRMainActivity.this,
+								ItemListActivity.class);
+						startActivity(i);
+
+					}
+
+				});
+
+		findViewById(R.id.main_statistics).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+						// start Activity
+						Intent i = new Intent(BMRMainActivity.this,
+								BMRStatisticsActivity.class);
+						startActivity(i);
+
+					}
+
+				});
 
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
@@ -61,6 +80,13 @@ public class BMRMainActivity extends FragmentActivity implements
 								getString(R.string.title_section1),
 								getString(R.string.title_section2),
 								getString(R.string.title_section3), }), this);
+	}
+
+	private void loadScreenWidthAndHeight() {
+		DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+		BMRApplication.width = localDisplayMetrics.widthPixels;
+		BMRApplication.height = localDisplayMetrics.heightPixels;
 	}
 
 	@Override
@@ -100,14 +126,14 @@ public class BMRMainActivity extends FragmentActivity implements
 
 	@Override
 	public boolean onNavigationItemSelected(int position, long id) {
-//		// When the given dropdown item is selected, show its contents in the
-//		// container view.
-//		Fragment fragment = new DummySectionFragment();
-//		Bundle args = new Bundle();
-//		args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-//		fragment.setArguments(args);
-//		getSupportFragmentManager().beginTransaction()
-//				.replace(R.id.container, fragment).commit();
+		// // When the given dropdown item is selected, show its contents in the
+		// // container view.
+		// Fragment fragment = new DummySectionFragment();
+		// Bundle args = new Bundle();
+		// args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+		// fragment.setArguments(args);
+		// getSupportFragmentManager().beginTransaction()
+		// .replace(R.id.container, fragment).commit();
 		return true;
 	}
 
