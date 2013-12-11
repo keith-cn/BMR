@@ -15,9 +15,9 @@ import com.microsoft.windowsazure.mobileservices.TableQueryCallback;
 
 public class BMRDataParse extends Service {
 	
-	private Intent intent = new Intent("com.hackathon.babymedicalrecord");  
+	//private Intent intent = new Intent("com.hackathon.babymedicalrecord");  
 	private MobileServiceTable<BMRData> mBMRData;
-	private boolean initialised = false;
+	//private boolean initialised = false;
 	
 	public int month[];
 	private int mMonth;
@@ -106,7 +106,7 @@ public class BMRDataParse extends Service {
 						//mAdapter.add(data);
 						 */
 					}
-					initialised = true;
+					//initialised = true;
 					//Log.e("WXJ", "initialised = " + initialised);
 					//intent.putExtra("binder", BMRDataParse.this);  
                     //sendBroadcast(intent);
@@ -144,7 +144,7 @@ public class BMRDataParse extends Service {
 	
 	public int[] getMonthData()
 	{
-		getCurrentMonthSymptom();
+		//getCurrentMonthSymptom();
 		return month;
 	}
 	public BMRSymptom[] getCurrentMonthSymptom()
