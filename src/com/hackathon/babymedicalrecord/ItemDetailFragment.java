@@ -2,6 +2,7 @@ package com.hackathon.babymedicalrecord;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ public class ItemDetailFragment extends Fragment {
 			// to load content from a content provider.
 			mItem = DummyContent.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
+			BMRData data = (BMRData) getArguments().getSerializable(ARG_ITEM_ID);
+			Log.e("Keith", "getArg: " + data.getHospital());
 		}
 	}
 

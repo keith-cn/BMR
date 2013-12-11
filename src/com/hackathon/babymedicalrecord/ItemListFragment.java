@@ -12,8 +12,10 @@ import com.microsoft.windowsazure.mobileservices.ServiceFilterResponseCallback;
 import com.microsoft.windowsazure.mobileservices.TableQueryCallback;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -136,6 +138,15 @@ public class ItemListFragment extends ListFragment {
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
 		mCallbacks.onItemSelected(getString(R.string.add)); // for test
+		Log.e("Keith", "mAdapter.getCount()" + mAdapter.getCount());
+		Log.e("Keith", "mAdapter.getCount()" + mAdapter.getItem(position).getHospital());
+		
+
+		Intent detailIntent = new Intent(getActivity(), ItemDetailActivity.class);
+		Bundle mBundle = new Bundle();
+		mBundle.putSerializable(ItemDetailFragment.ARG_ITEM_ID, mAdapter.getItem(position));
+		detailIntent.putExtras(mBundle);
+		startActivity(detailIntent);
 	}
 
 	@Override

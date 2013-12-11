@@ -1,6 +1,8 @@
 package com.hackathon.babymedicalrecord;
 
-public class BMRData {
+import java.io.Serializable;
+
+public class BMRData implements Serializable {
 
 	/**
 	 * Item Id
