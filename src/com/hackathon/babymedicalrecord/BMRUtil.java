@@ -16,6 +16,7 @@ public class BMRUtil {
 	public final static String SERVICE_URL = "https://babymedicalrecord.azure-mobile.net/";
 	public static MobileServiceTable<BMRUser> mBMRUser;
 	public static MobileServiceTable<BMRData> mBMRData;
+	public static BMRDataParse dataparseService;
 	public static final int[] COLORS;
 
 	static {
@@ -114,5 +115,23 @@ public class BMRUtil {
 		builder.setTitle(title);
 		builder.create().show();
 	}
-
+	/**
+	 * set bmrdata parse service
+	 * 
+	 * @param service
+	 *            The BMRDataParse service
+	 */
+	public static void setBMRDataService(BMRDataParse service) {
+		dataparseService = service;
+	}
+	
+	public static int [] getMonthData()
+	{
+		return dataparseService.getMonthData();
+	}
+	
+	public static BMRSymptom[] getCurrentMonthSymptom()
+	{
+		return dataparseService.getCurrentMonthSymptom();
+	}
 }

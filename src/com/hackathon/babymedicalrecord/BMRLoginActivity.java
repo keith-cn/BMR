@@ -5,6 +5,7 @@ import static com.microsoft.windowsazure.mobileservices.MobileServiceQueryOperat
 import java.net.MalformedURLException;
 import java.util.List;
 
+import com.hackathon.babymedicalrecord.BMRDataParse.MyBinder;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.NextServiceFilterCallback;
@@ -17,8 +18,14 @@ import com.umeng.analytics.MobclickAgent;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +41,9 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 	private TextView mName;
 	private TextView mPassword;
 
+	private BMRDataParse dataparseService;
+	private MsgReceiver msgReceiver;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,8 +81,60 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 		if (actionBar != null) {
 			getActionBar().setDisplayShowHomeEnabled(false);
 		}
+		Log.e("WXJ", "oncreate = " + conn);
+        //bind Service  
+        //Intent intent = new Intent("com.hackathon.babymedicalrecord.MSG_ACTION");
+		Intent intent = new Intent(this, BMRDataParse.class);
+        bindService(intent, conn, Context.BIND_AUTO_CREATE);
+        
+        msgReceiver = new MsgReceiver();  
+        IntentFilter intentFilter = new IntentFilter();  
+        intentFilter.addAction("com.hackathon.babymedicalrecord");  
+        registerReceiver(msgReceiver, intentFilter);
+        Log.e("WXJ", "dataparseService = " + dataparseService);
 	}
-
+    ServiceConnection conn = new ServiceConnection() {  
+        @Override  
+        public void onServiceDisconnected(ComponentName name) {  
+              
+        }  
+          
+        @Override  
+        public void onServiceConnected(ComponentName name, IBinder service) {  
+        	Log.e("WXJ", "begin getService " + service);
+        	//MyBinder binder = (MyBinder)service;
+        	dataparseService = ((MyBinder)service).getService();
+        	
+        	dataparseService.startService();
+        	
+        	BMRUtil.setBMRDataService(dataparseService);
+        	
+        }  
+    };
+    /** 
+     * receive broadcast
+     */  
+    public class MsgReceiver extends BroadcastReceiver{  
+  
+        @Override  
+        public void onReceive(Context context, Intent intent) {
+        	
+        	//BMRDataParse md = intent.getExtras();
+        	
+    		int month[] = BMRUtil.getMonthData();
+    		for(int i = 0; i <= 12; i++)
+    		{
+    			Log.e("WXJ", "month[" + i + "] = " + month[i]);
+    		}
+        }  
+          
+    }
+    @Override  
+    protected void onDestroy() {  
+        unbindService(conn); 
+        unregisterReceiver(msgReceiver);
+        super.onDestroy();  
+    }  
 	@Override
 	public void onResume() {
 		super.onResume();

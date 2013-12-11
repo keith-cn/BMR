@@ -27,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <service android:name=".BMRDataParse" android:exported="true"></service>
+        
         <activity
             android:name="BMRUserRegisterActivity"
             android:label="@string/app_name"
