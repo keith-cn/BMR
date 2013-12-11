@@ -163,7 +163,7 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 			// start Activity
 //			Intent i = new Intent(
 //					BMRLoginActivity.this,
-//					BMRMainActivity.class);
+//					BMRDataAddActivity.class);
 //			startActivity(i);
 
 		} else if (v.getId() == R.id.register_btn) {
@@ -192,12 +192,7 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 							Exception exception, ServiceFilterResponse response) {
 						if (exception == null) {
 
-							Log.e("Keith", "exception null, " + count);
 							for (BMRUser user : result) {
-								Log.e("Keith", user.toString());
-								Log.e("Keith", "getName() " + user.getName());
-								Log.e("Keith",
-										"getPassword() " + user.getPassword());
 								if (user.getName().equals(
 										mName.getText().toString()) == true
 										&& user.getPassword().equals(
@@ -208,6 +203,7 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 											BMRLoginActivity.this,
 											BMRMainActivity.class);
 									startActivity(i);
+									BMRLoginActivity.this.finish();
 									return;
 								}
 							}

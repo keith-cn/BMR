@@ -112,7 +112,7 @@ public class ItemListActivity extends FragmentActivity implements
 	            return true;
 	        case R.id.action_refresh:
 	        	// refresh
-	        	mItemListFragment.refreshItemsFromTable();
+//	        	mItemListFragment.refreshItemsFromTable();
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

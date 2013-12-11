@@ -134,4 +134,9 @@ public class BMRUtil {
 	{
 		return dataparseService.getCurrentMonthSymptom();
 	}
+
+	public static String getWeek(int paramInt) {
+		return new String[] { "", "Sunday", "Monday", "Tuesday", "Wenesday", "Thursday", "Friday",
+				"Saturday" }[paramInt];
+	}
 }

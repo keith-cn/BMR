@@ -96,6 +96,14 @@ public class ItemListFragment extends ListFragment {
 		// Load the items from the Mobile Service
 		refreshItemsFromTable();
 	}
+	
+    @Override
+    public void onResume() {
+        super.onResume();
+
+		Log.e("Keith", "ItemListFragment onResume(): ");
+		refreshItemsFromTable();
+    }
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {

@@ -67,15 +67,14 @@ public class BMRUserRegisterActivity extends Activity implements
 		mUserName = (EditText) findViewById(R.id.reg_name_edit);
 		mPassword = (EditText) findViewById(R.id.reg_password_edit);
 		mBabyName = (EditText) findViewById(R.id.reg_baby_name_edit);
-		mGender = (RadioGroup) findViewById(R.id.reg_gender);
+		mGender = (RadioGroup) findViewById(R.id.reg_gender_radio);
 		mBirthday = (Button) findViewById(R.id.reg_birthday_btn);
 		setBirthdayListener(mBirthday);
 
 		try {
 			// Create the Mobile Service Client instance, using the provided
 			// Mobile Service URL and key
-			mClient = new MobileServiceClient(
-					BMRUtil.SERVICE_URL,
+			mClient = new MobileServiceClient(BMRUtil.SERVICE_URL,
 					"HiboUWjGJdFYYBHsmWUYfaSPvjtdZZ89", this)
 					.withFilter(new ProgressFilter());
 
@@ -88,10 +87,9 @@ public class BMRUserRegisterActivity extends Activity implements
 							"There was an error creating the Mobile Service. Verify the URL"),
 					"Error", this);
 		}
-		
 
-//        mClient = BMRUtil.getMobileService(this, null);
-//        mBMRUser = BMRUtil.getBMRUserTable(this, null);
+		// mClient = BMRUtil.getMobileService(this, null);
+		// mBMRUser = BMRUtil.getBMRUserTable(this, null);
 
 		// hide the action bar icon
 		// getActionBar().setIcon(R.drawable.fake_action_icon);
@@ -143,9 +141,11 @@ public class BMRUserRegisterActivity extends Activity implements
 
 					if (exception == null) {
 						BMRUtil.createAndShowDialog("insert done",
-								"Baby Medical Record", BMRUserRegisterActivity.this);
+								"Baby Medical Record",
+								BMRUserRegisterActivity.this);
 					} else {
-						BMRUtil.createAndShowDialog(exception, "Error", BMRUserRegisterActivity.this);
+						BMRUtil.createAndShowDialog(exception, "Error",
+								BMRUserRegisterActivity.this);
 					}
 
 				}
@@ -186,7 +186,7 @@ public class BMRUserRegisterActivity extends Activity implements
 										+ BMRUserRegisterActivity.this.noteCalendar
 												.get(5)
 										+ " "
-										+ BMRUserRegisterActivity.this
+										+ BMRUtil
 												.getWeek(BMRUserRegisterActivity.this.noteCalendar
 														.get(7)));
 							}
@@ -196,11 +196,6 @@ public class BMRUserRegisterActivity extends Activity implements
 						.show();
 			}
 		});
-	}
-
-	public String getWeek(int paramInt) {
-		return new String[] { "", "Sun", "Mon", "Tue", "Wen", "Thr", "Fri",
-				"Sat" }[paramInt];
 	}
 
 	/**
@@ -218,7 +213,8 @@ public class BMRUserRegisterActivity extends Activity implements
 						if (exception == null) {
 
 						} else {
-							BMRUtil.createAndShowDialog(exception, "Error", BMRUserRegisterActivity.this);
+							BMRUtil.createAndShowDialog(exception, "Error",
+									BMRUserRegisterActivity.this);
 						}
 					}
 				});

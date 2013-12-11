@@ -105,13 +105,13 @@ public class BMRDataAddActivity extends Activity implements
 					//Log.e("Keith", "onCompleted, entity: " + entity.toString());
 
 					if (exception == null) {
-						BMRUtil.createAndShowDialog("insert done",
+						BMRUtil.createAndShowDialog("Insert successfully.",
 								"Baby Medical Record", BMRDataAddActivity.this);
 					} else {
-						BMRUtil.createAndShowDialog(exception, "Error",
+						BMRUtil.createAndShowDialog(exception, "Insert fail.",
 								BMRDataAddActivity.this);
 					}
-
+					BMRDataAddActivity.this.finish();
 				}
 			});
 
@@ -156,11 +156,6 @@ public class BMRDataAddActivity extends Activity implements
 		}
 	}
 
-	public String getWeek(int paramInt) {
-		return new String[] { "", "Sun", "Mon", "Tue", "Wen", "Thr", "Fri",
-				"Sat" }[paramInt];
-	}
-
 	private void setDateListener(View v) {
 		v.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View paramAnonymousView) {
@@ -190,8 +185,7 @@ public class BMRDataAddActivity extends Activity implements
 										+ BMRDataAddActivity.this.noteCalendar
 												.get(5)
 										+ " "
-										+ BMRDataAddActivity.this
-												.getWeek(BMRDataAddActivity.this.noteCalendar
+										+ BMRUtil.getWeek(BMRDataAddActivity.this.noteCalendar
 														.get(7)));
 							}
 						}, BMRDataAddActivity.this.noteCalendar.get(1),

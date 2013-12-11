@@ -56,7 +56,7 @@
         </activity>
         <activity
             android:name="BMRDataAddActivity"
-            android:label="@string/add"
+            android:label="Add a record"
             android:screenOrientation="portrait" >
         </activity>
         <activity

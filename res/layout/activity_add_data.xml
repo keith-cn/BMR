@@ -6,15 +6,13 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.60"
+        android:layout_height="fill_parent"
         android:background="#ffeeefef"
         android:scrollbars="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="474dp"
-            android:layout_weight="0.76" >
+            android:layout_height="wrap_content" >
 
             <TextView
                 android:id="@+id/textView1"
@@ -24,16 +22,20 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="28dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/date" />
 
             <Button
                 android:id="@+id/date_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
                 android:layout_alignBaseline="@+id/textView1"
                 android:layout_alignBottom="@+id/textView1"
-                android:layout_centerHorizontal="true"
                 android:text="@string/select_date" />
+            
+            <requestFocus />
 
             <TextView
                 android:id="@+id/textView2"
@@ -41,14 +43,17 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView1"
                 android:layout_below="@+id/date_btn"
-                android:layout_marginTop="18dp"
-                android:text="@string/symptom_name" />
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Name" />
 
             <EditText
                 android:id="@+id/symptom_name_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/date_btn"
+                android:layout_alignLeft="@+id/date_btn"
+                android:layout_alignBottom="@+id/textView2"
                 android:layout_toRightOf="@+id/textView2"
                 android:ems="10" />
 
@@ -56,9 +61,11 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignLeft="@+id/textView1"
                 android:layout_below="@+id/symptom_name_edit"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/temperature" />
 
             <EditText
@@ -66,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView3"
-                android:layout_toRightOf="@+id/textView2"
+                android:layout_alignLeft="@+id/date_btn"
                 android:ems="10"
                 android:inputType="numberDecimal" />
 
@@ -74,51 +81,57 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_below="@+id/textView3"
-                android:layout_marginTop="20dp"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/temperature_edit"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/hospital" />
 
             <EditText
                 android:id="@+id/hospital_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/date_btn"
                 android:layout_alignBottom="@+id/textView4"
-                android:layout_toRightOf="@+id/textView2"
                 android:ems="10" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView4"
-                android:layout_below="@+id/textView4"
-                android:layout_marginTop="19dp"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/hospital_edit"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/doctor" />
 
             <EditText
                 android:id="@+id/doctor_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/date_btn"
                 android:layout_alignBottom="@+id/textView5"
-                android:layout_alignParentRight="true"
                 android:ems="10" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView5"
-                android:layout_below="@+id/textView5"
-                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/doctor_edit"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/cost" />
 
             <EditText
                 android:id="@+id/cost_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView6"
                 android:layout_alignLeft="@+id/date_btn"
+                android:layout_alignBottom="@+id/textView6"
                 android:ems="10"
                 android:inputType="numberDecimal" />
 
@@ -126,34 +139,38 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView6"
-                android:layout_below="@+id/textView6"
-                android:layout_marginTop="14dp"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/cost_edit"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/medicine" />
 
             <EditText
                 android:id="@+id/medicine_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/date_btn"
                 android:layout_alignBottom="@+id/textView7"
-                android:layout_toRightOf="@+id/textView3"
                 android:ems="10" />
-
+            
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/textView7"
-                android:layout_below="@+id/textView7"
-                android:layout_marginTop="24dp"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/medicine_edit"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/diagnosis" />
 
             <EditText
                 android:id="@+id/diagnosis_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textView8"
-                android:layout_toRightOf="@+id/textView3"
+                android:layout_alignLeft="@+id/date_btn"
+                android:layout_alignBottom="@+id/textView8"
                 android:ems="10"
                 android:inputType="textMultiLine" />
 
@@ -161,27 +178,31 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView8"
+                android:layout_alignLeft="@+id/textView1"
                 android:layout_below="@+id/diagnosis_edit"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/others" />
 
             <EditText
                 android:id="@+id/others"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/date_btn"
                 android:layout_alignBaseline="@+id/textView9"
                 android:layout_alignBottom="@+id/textView9"
-                android:layout_toRightOf="@+id/textView3"
                 android:ems="10" />
 
             <Button
                 android:id="@+id/add_data_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/doctor_edit"
                 android:layout_below="@+id/others"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="22dp"
+        		android:textStyle="bold"
+        		android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@android:string/ok" />
 
         </RelativeLayout>

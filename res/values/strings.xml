@@ -78,7 +78,7 @@
     
     <string name="others">Others</string>
     
-    <string name="ill_top_months">高峰月份</string>
+    <string name="ill_top_months">Peak months</string>
     <string name="num_monthly">按月份分布</string>
     <string name="num_illness">按疾病分布</string>
     <string name="which_year">2013</string>
@@ -87,4 +87,5 @@
     <string name="percentage">"Percentage "</string>
     <string name="top_name">Name</string>
     <string name="top_num">Number</string>
+    <string name="delete">Delete</string>
 </resources>
