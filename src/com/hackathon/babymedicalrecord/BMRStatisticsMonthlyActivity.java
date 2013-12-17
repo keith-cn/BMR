@@ -76,6 +76,7 @@ public class BMRStatisticsMonthlyActivity extends Activity {
         for (i=0;i<12;i++) {
         	arrayOfData[i] = numberBean.new Data("test1", 12, 34.5);
         }
+        
         numberBean.setDatas(arrayOfData);
 		numAdapter = new BMRNumberAdapter(this, numberBean);
 		localListView.setAdapter(numAdapter);

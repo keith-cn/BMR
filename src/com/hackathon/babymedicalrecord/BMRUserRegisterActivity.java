@@ -71,22 +71,8 @@ public class BMRUserRegisterActivity extends Activity implements
 		mBirthday = (Button) findViewById(R.id.reg_birthday_btn);
 		setBirthdayListener(mBirthday);
 
-		try {
-			// Create the Mobile Service Client instance, using the provided
-			// Mobile Service URL and key
-			mClient = new MobileServiceClient(BMRUtil.SERVICE_URL,
-					"HiboUWjGJdFYYBHsmWUYfaSPvjtdZZ89", this)
-					.withFilter(new ProgressFilter());
-
-			// Get the Mobile Service Table instance to use
-			mBMRUser = mClient.getTable(BMRUser.class);
-
-		} catch (MalformedURLException e) {
-			BMRUtil.createAndShowDialog(
-					new Exception(
-							"There was an error creating the Mobile Service. Verify the URL"),
-					"Error", this);
-		}
+		mClient = BMRUtil.getMobileService(this, new ProgressFilter());
+		mBMRUser = BMRUtil.getBMRUserTable();
 
 		// mClient = BMRUtil.getMobileService(this, null);
 		// mBMRUser = BMRUtil.getBMRUserTable(this, null);

@@ -228,7 +228,8 @@
                             android:id="@+id/yesterday_image_2"
                             style="@style/dashboard_item_icon_day"
                             android:layout_alignParentRight="true"
-                            android:src="@drawable/today_mark" />
+                            
+                            />
 
                         <TextView
                             android:id="@+id/todaydata_newuser_text_1"
@@ -251,7 +252,7 @@
                             android:id="@+id/yesterday_image_1"
                             style="@style/dashboard_item_icon_day"
                             android:layout_alignParentRight="true"
-                            android:src="@drawable/yesterday_mark" />
+                             />
 
                         <TextView
                             android:id="@+id/yesterdaydata_newuser_text"

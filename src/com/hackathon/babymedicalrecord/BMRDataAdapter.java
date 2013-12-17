@@ -24,7 +24,6 @@ public class BMRDataAdapter extends ArrayAdapter<BMRData> {
 	 */
 	int mLayoutResourceId;
 
-
 	public BMRDataAdapter(Context context, int layoutResourceId) {
 		super(context, layoutResourceId);
 
@@ -47,30 +46,35 @@ public class BMRDataAdapter extends ArrayAdapter<BMRData> {
 		}
 
 		row.setTag(currentItem);
-		final TextView text1 = (TextView) row.findViewById(android.R.id.text1);
-		final TextView text2 = (TextView) row.findViewById(android.R.id.text2);
-		
+		final TextView text1 = (TextView) row.findViewById(R.id.listitem_text1);
+		final TextView text2 = (TextView) row.findViewById(R.id.listitem_text2);
+		final TextView text3 = (TextView) row.findViewById(R.id.listitem_text3);
+
 		text1.setText(currentItem.getSymptomName());
 		text2.setText(currentItem.getHospital());
-		
-//		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkBMRData);
-//		checkBox.setText(currentItem.getText());
-//		checkBox.setChecked(false);
-//		checkBox.setEnabled(true);
-//
-//		checkBox.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View arg0) {
-////				if (checkBox.isChecked()) {
-////					checkBox.setEnabled(false);
-////					if (mContext instanceof ToDoActivity) {
-////						ToDoActivity activity = (ToDoActivity) mContext;
-////						activity.checkItem(currentItem);
-////					}
-////				}
-//			}
-//		});
+		text3.setText(String.valueOf(currentItem.getSymptomYear()) + "/"
+				+ String.valueOf(currentItem.getSymptomMonth()) + "/"
+				+ String.valueOf(currentItem.getSymptomDay()));
+
+		// final CheckBox checkBox = (CheckBox)
+		// row.findViewById(R.id.checkBMRData);
+		// checkBox.setText(currentItem.getText());
+		// checkBox.setChecked(false);
+		// checkBox.setEnabled(true);
+		//
+		// checkBox.setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View arg0) {
+		// // if (checkBox.isChecked()) {
+		// // checkBox.setEnabled(false);
+		// // if (mContext instanceof ToDoActivity) {
+		// // ToDoActivity activity = (ToDoActivity) mContext;
+		// // activity.checkItem(currentItem);
+		// // }
+		// // }
+		// }
+		// });
 
 		return row;
 	}

@@ -7,6 +7,10 @@ public class BMRApplication extends Application {
 	public static int height = 0;
 	public static int width = 0;
 	private static BMRApplication instance;
+	
+	static {
+		System.loadLibrary("bmr-jni");
+	}
 
 	public static BMRApplication getInstance() {
 		return instance;

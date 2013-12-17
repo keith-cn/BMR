@@ -90,7 +90,7 @@ public class ItemListFragment extends ListFragment {
 		mBMRData = BMRUtil.getBMRDataTable();
 		
 		// Create an adapter to bind the items with the view
-		mAdapter = new BMRDataAdapter(getActivity(), android.R.layout.simple_list_item_2);
+		mAdapter = new BMRDataAdapter(getActivity(), R.layout.list_item_layout);
 		setListAdapter(mAdapter);
 		
 		// Load the items from the Mobile Service

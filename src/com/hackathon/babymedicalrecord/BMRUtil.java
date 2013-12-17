@@ -13,7 +13,6 @@ import android.graphics.Color;
 public class BMRUtil {
 
 	public static MobileServiceClient mClient;
-	public final static String SERVICE_URL = "https://babymedicalrecord.azure-mobile.net/";
 	public static MobileServiceTable<BMRUser> mBMRUser;
 	public static MobileServiceTable<BMRData> mBMRData;
 	public static BMRDataParse dataparseService;
@@ -33,6 +32,9 @@ public class BMRUtil {
 		colors[9] = Color.parseColor("#ffffff");
 		COLORS = colors;
 	}
+	
+	public native static String getServiceURL();
+	public native static String getAppKey();
 
 	public static MobileServiceClient getMobileService(Context context,
 			ServiceFilter filter) {
@@ -41,8 +43,8 @@ public class BMRUtil {
 			// Create the Mobile Service Client instance, using the provided
 			// Mobile Service URL and key
 			if (mClient == null) {
-				mClient = new MobileServiceClient(SERVICE_URL,
-						"HiboUWjGJdFYYBHsmWUYfaSPvjtdZZ89", context)
+				mClient = new MobileServiceClient(getServiceURL(),
+						getAppKey(), context)
 						.withFilter(filter);
 			}
 		} catch (MalformedURLException e) {

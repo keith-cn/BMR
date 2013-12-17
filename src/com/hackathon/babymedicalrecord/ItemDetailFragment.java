@@ -24,7 +24,8 @@ import android.widget.TextView;
  * contained in a {@link ItemListActivity} in two-pane mode (on tablets) or a
  * {@link ItemDetailActivity} on handsets.
  */
-public class ItemDetailFragment extends Fragment implements View.OnClickListener {
+public class ItemDetailFragment extends Fragment implements
+		View.OnClickListener {
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -35,21 +36,20 @@ public class ItemDetailFragment extends Fragment implements View.OnClickListener
 	 * The dummy content this fragment is presenting.
 	 */
 	private DummyContent.DummyItem mItem;
-	
 
 	private MobileServiceClient mClient;
 	private MobileServiceTable<BMRData> mBMRData;
 	BMRData mData;
-	
-//	private TextView mDate;
-//	private TextView mSymptomName;
-//	private TextView mSymptomTemperature;
-//	private TextView mHospital;
-//	private TextView mDoctor;
-//	private TextView mCost;
-//	private TextView mMedicine;
-//	private TextView mDiagnosis;
-//	private TextView mSymptomDetail;
+
+	// private TextView mDate;
+	// private TextView mSymptomName;
+	// private TextView mSymptomTemperature;
+	// private TextView mHospital;
+	// private TextView mDoctor;
+	// private TextView mCost;
+	// private TextView mMedicine;
+	// private TextView mDiagnosis;
+	// private TextView mSymptomDetail;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -71,7 +71,7 @@ public class ItemDetailFragment extends Fragment implements View.OnClickListener
 			mData = (BMRData) getArguments().getSerializable(ARG_ITEM_ID);
 			Log.e("Keith", "getArg: " + mData.getHospital());
 		}
-		
+
 	}
 
 	@Override
@@ -80,28 +80,40 @@ public class ItemDetailFragment extends Fragment implements View.OnClickListener
 		View rootView = inflater.inflate(R.layout.fragment_item_detail,
 				container, false);
 
-
 		rootView.findViewById(R.id.details_delete).setOnClickListener(this);
 
-		((TextView) rootView.findViewById(R.id.detail_date)).setText(mData.getSymptomYear() + "-" + mData.getSymptomMonth()+"-"+mData.getSymptomDay());
-		((TextView) rootView.findViewById(R.id.detail_symptom_name)).setText(mData.getSymptomName());
-		((TextView) rootView.findViewById(R.id.detail_temperature)).setText(mData.getSymptomTemperature());
-		((TextView) rootView.findViewById(R.id.detail_hospital)).setText(mData.getHospital());
-		((TextView) rootView.findViewById(R.id.detail_doctor)).setText(mData.getDoctor());
-		((TextView) rootView.findViewById(R.id.detail_cost)).setText(String.valueOf(mData.getCost()));
-		((TextView) rootView.findViewById(R.id.detail_medicine)).setText(mData.getMedicine());
-		((TextView) rootView.findViewById(R.id.detail_diagnosis)).setText(mData.getDiagnosis());
-		((TextView) rootView.findViewById(R.id.detail_others)).setText(mData.getSymptomDetail());
-		
-		
-//		mSymptomName = (TextView) rootView.findViewById(R.id.detail_symptom_name);
-//		mSymptomTemperature = (TextView) rootView.findViewById(R.id.detail_temperature);
-//		mHospital = (TextView) rootView.findViewById(R.id.detail_hospital);
-//		mDoctor = (TextView) rootView.findViewById(R.id.detail_doctor);
-//		mCost = (TextView) rootView.findViewById(R.id.detail_cost);
-//		mMedicine = (TextView) rootView.findViewById(R.id.detail_medicine);
-//		mDiagnosis = (TextView) rootView.findViewById(R.id.detail_diagnosis);
-//		mSymptomDetail = (TextView) rootView.findViewById(R.id.detail_others);
+		((TextView) rootView.findViewById(R.id.detail_date)).setText(String
+				.valueOf(mData.getSymptomYear())
+				+ "-"
+				+ String.valueOf(mData.getSymptomMonth()) + "-" + String.valueOf(mData.getSymptomDay()));
+		((TextView) rootView.findViewById(R.id.detail_symptom_name))
+				.setText(mData.getSymptomName());
+		((TextView) rootView.findViewById(R.id.detail_temperature))
+				.setText(mData.getSymptomTemperature());
+		((TextView) rootView.findViewById(R.id.detail_hospital)).setText(mData
+				.getHospital());
+		((TextView) rootView.findViewById(R.id.detail_doctor)).setText(mData
+				.getDoctor());
+		((TextView) rootView.findViewById(R.id.detail_cost)).setText(String
+				.valueOf(mData.getCost()));
+		((TextView) rootView.findViewById(R.id.detail_medicine)).setText(mData
+				.getMedicine());
+		((TextView) rootView.findViewById(R.id.detail_diagnosis)).setText(mData
+				.getDiagnosis());
+		((TextView) rootView.findViewById(R.id.detail_others)).setText(mData
+				.getSymptomDetail());
+
+		// mSymptomName = (TextView)
+		// rootView.findViewById(R.id.detail_symptom_name);
+		// mSymptomTemperature = (TextView)
+		// rootView.findViewById(R.id.detail_temperature);
+		// mHospital = (TextView) rootView.findViewById(R.id.detail_hospital);
+		// mDoctor = (TextView) rootView.findViewById(R.id.detail_doctor);
+		// mCost = (TextView) rootView.findViewById(R.id.detail_cost);
+		// mMedicine = (TextView) rootView.findViewById(R.id.detail_medicine);
+		// mDiagnosis = (TextView) rootView.findViewById(R.id.detail_diagnosis);
+		// mSymptomDetail = (TextView)
+		// rootView.findViewById(R.id.detail_others);
 
 		mClient = BMRUtil.getMobileService(getActivity(), new ProgressFilter());
 		mBMRData = BMRUtil.getBMRDataTable();
@@ -113,19 +125,19 @@ public class ItemDetailFragment extends Fragment implements View.OnClickListener
 	public void onClick(View v) {
 
 		if (v.getId() == R.id.details_delete) {
-			
+
 			mBMRData.delete(mData.getId(), new TableDeleteCallback() {
-		        public void onCompleted(Exception exception, 
-		                ServiceFilterResponse response) {
-		            if(exception == null){
-		            	BMRUtil.createAndShowDialog("Delete done.",
+				public void onCompleted(Exception exception,
+						ServiceFilterResponse response) {
+					if (exception == null) {
+						BMRUtil.createAndShowDialog("Delete done.",
 								"Babay Medical Record", getActivity());
-		            }
-		            
-		            getActivity().finish();
-		        }
-		    });
-		}	
+					}
+
+					getActivity().finish();
+				}
+			});
+		}
 	}
 
 	private class ProgressFilter implements ServiceFilter {

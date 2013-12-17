@@ -86,12 +86,18 @@ public class BMRStatisticsActivity extends Activity implements
 		// illness chart
 		SimpleSeriesRenderer localSimpleSeriesRenderer1 = new SimpleSeriesRenderer();
 		SimpleSeriesRenderer localSimpleSeriesRenderer2 = new SimpleSeriesRenderer();
+		SimpleSeriesRenderer localSimpleSeriesRenderer3 = new SimpleSeriesRenderer();
+		SimpleSeriesRenderer localSimpleSeriesRenderer4 = new SimpleSeriesRenderer();
+		SimpleSeriesRenderer localSimpleSeriesRenderer5 = new SimpleSeriesRenderer();
 		GraphicalView mChartView;
 		CategorySeries pieChartSeries = new CategorySeries("disease 1");
 		DefaultRenderer pieChartRenderer = new DefaultRenderer();
 
-		pieChartSeries.add("category 1", 1.22);
-		pieChartSeries.add("category 2", 2.22);
+		pieChartSeries.add("illness 1", 10);
+		pieChartSeries.add("illness 2", 20);
+		pieChartSeries.add("illness 3", 30);
+		pieChartSeries.add("illness 4", 5);
+		pieChartSeries.add("illness 5", 25);
 
 		// (localAppVersion.getVersion(), new Double(
 		// localAppVersion.getTotalInstallRate()).doubleValue());
@@ -99,8 +105,17 @@ public class BMRStatisticsActivity extends Activity implements
 				.setColor(BMRUtil.COLORS[((-1 + pieChartSeries.getItemCount()) % BMRUtil.COLORS.length)]);
 		localSimpleSeriesRenderer2.setColor(BMRUtil.COLORS[((-1
 				+ pieChartSeries.getItemCount() + 1) % BMRUtil.COLORS.length)]);
+		localSimpleSeriesRenderer3.setColor(BMRUtil.COLORS[((-1
+				+ pieChartSeries.getItemCount() + 2) % BMRUtil.COLORS.length)]);
+		localSimpleSeriesRenderer4.setColor(BMRUtil.COLORS[((-1
+				+ pieChartSeries.getItemCount() + 3) % BMRUtil.COLORS.length)]);
+		localSimpleSeriesRenderer5.setColor(BMRUtil.COLORS[((-1
+				+ pieChartSeries.getItemCount() + 4) % BMRUtil.COLORS.length)]);
 		pieChartRenderer.addSeriesRenderer(localSimpleSeriesRenderer1);
 		pieChartRenderer.addSeriesRenderer(localSimpleSeriesRenderer2);
+		pieChartRenderer.addSeriesRenderer(localSimpleSeriesRenderer3);
+		pieChartRenderer.addSeriesRenderer(localSimpleSeriesRenderer4);
+		pieChartRenderer.addSeriesRenderer(localSimpleSeriesRenderer5);
 
 		mChartView = ChartFactory.getPieChartView(this, pieChartSeries,
 				pieChartRenderer);
