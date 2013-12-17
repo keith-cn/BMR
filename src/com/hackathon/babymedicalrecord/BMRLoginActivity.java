@@ -44,11 +44,6 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 	private BMRDataParse dataparseService;
 	private MsgReceiver msgReceiver;
 
-	static {
-		System.loadLibrary("bmr-jni");
-	}
-	public native static String getServiceURL2();
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
