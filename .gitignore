@@ -1,4 +1,9 @@
+.settings
 bin
 gen
-obj
 jni
+obj
+.classpath
+.project
+proguard-project.txt
+project.properties
