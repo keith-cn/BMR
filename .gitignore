@@ -7,3 +7,12 @@ obj
 .project
 proguard-project.txt
 project.properties
+tests/.settings
+tests/bin
+tests/gen
+tests/jni
+tests/obj
+tests/.classpath
+tests/.project
+tests/proguard-project.txt
+tests/project.properties

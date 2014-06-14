@@ -43,6 +43,8 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 
 	private BMRDataParse dataparseService;
 	private MsgReceiver msgReceiver;
+	
+	private BMRDatabaseHelper mUserDatabase;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,59 +84,66 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 			getActionBar().setDisplayShowHomeEnabled(false);
 		}
 		Log.e("WXJ", "oncreate = " + conn);
-        //bind Service  
-        //Intent intent = new Intent("com.hackathon.babymedicalrecord.MSG_ACTION");
+		// bind Service
+		// Intent intent = new
+		// Intent("com.hackathon.babymedicalrecord.MSG_ACTION");
 		Intent intent = new Intent(this, BMRDataParse.class);
-        bindService(intent, conn, Context.BIND_AUTO_CREATE);
-        
-        msgReceiver = new MsgReceiver();  
-        IntentFilter intentFilter = new IntentFilter();  
-        intentFilter.addAction("com.hackathon.babymedicalrecord");  
-        registerReceiver(msgReceiver, intentFilter);
-        Log.e("WXJ", "dataparseService = " + dataparseService);
+		bindService(intent, conn, Context.BIND_AUTO_CREATE);
+
+		msgReceiver = new MsgReceiver();
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("com.hackathon.babymedicalrecord");
+		registerReceiver(msgReceiver, intentFilter);
+		Log.e("WXJ", "dataparseService = " + dataparseService);
+		
+		// create database helper
+		mUserDatabase = new BMRDatabaseHelper(getBaseContext());
 	}
-    ServiceConnection conn = new ServiceConnection() {  
-        @Override  
-        public void onServiceDisconnected(ComponentName name) {  
-              
-        }  
-          
-        @Override  
-        public void onServiceConnected(ComponentName name, IBinder service) {  
-        	Log.e("WXJ", "begin getService " + service);
-        	//MyBinder binder = (MyBinder)service;
-        	dataparseService = ((MyBinder)service).getService();
-        	
-        	dataparseService.startService();
-        	
-        	BMRUtil.setBMRDataService(dataparseService);
-        	
-        }  
-    };
-    /** 
-     * receive broadcast
-     */  
-    public class MsgReceiver extends BroadcastReceiver{  
-  
-        @Override  
-        public void onReceive(Context context, Intent intent) {
-        	
-        	//BMRDataParse md = intent.getExtras();
-        	
-    		int month[] = BMRUtil.getMonthData();
-    		for(int i = 0; i <= 12; i++)
-    		{
-    			Log.e("WXJ", "month[" + i + "] = " + month[i]);
-    		}
-        }  
-          
-    }
-    @Override  
-    protected void onDestroy() {  
-        unbindService(conn); 
-        unregisterReceiver(msgReceiver);
-        super.onDestroy();  
-    }  
+
+	ServiceConnection conn = new ServiceConnection() {
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+
+		}
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			Log.e("WXJ", "begin getService " + service);
+			// MyBinder binder = (MyBinder)service;
+			dataparseService = ((MyBinder) service).getService();
+
+			dataparseService.startService();
+
+			BMRUtil.setBMRDataService(dataparseService);
+
+		}
+	};
+
+	/**
+	 * receive broadcast
+	 */
+	public class MsgReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+
+			// BMRDataParse md = intent.getExtras();
+
+			int month[] = BMRUtil.getMonthData();
+			for (int i = 0; i <= 12; i++) {
+				Log.e("WXJ", "month[" + i + "] = " + month[i]);
+			}
+		}
+
+	}
+
+	@Override
+	protected void onDestroy() {
+		unbindService(conn);
+		unregisterReceiver(msgReceiver);
+		super.onDestroy();
+	}
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -157,14 +166,15 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 						"Babay Medical Record", this);
 				return;
 			}
-			
+
 			// TODO for develop
-			verifyUser(); 
+//			verifyUser();
+			
 			// start Activity
-//			Intent i = new Intent(
-//					BMRLoginActivity.this,
-//					BMRDataAddActivity.class);
-//			startActivity(i);
+			 Intent i = new Intent(
+			 BMRLoginActivity.this,
+			 BMRMainActivity.class);
+			 startActivity(i);
 
 		} else if (v.getId() == R.id.register_btn) {
 			// start Activity
@@ -182,45 +192,52 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 	 */
 	private void verifyUser() {
 
-		// Get the items that weren't marked as completed and add them in the
-		// adapter
-		mBMRUser.where().field("name").eq(val(mName.getText().toString()))
-				.and().field("password").eq(mPassword.getText().toString())
-				.execute(new TableQueryCallback<BMRUser>() {
+		if (BMRUtil.isUseLocalDB) {
+			
+		} else {
+			// Get the items that weren't marked as completed and add them in
+			// the
+			// adapter
+			mBMRUser.where().field("name").eq(val(mName.getText().toString()))
+					.and().field("password").eq(mPassword.getText().toString())
+					.execute(new TableQueryCallback<BMRUser>() {
 
-					public void onCompleted(List<BMRUser> result, int count,
-							Exception exception, ServiceFilterResponse response) {
-						if (exception == null) {
+						public void onCompleted(List<BMRUser> result,
+								int count, Exception exception,
+								ServiceFilterResponse response) {
+							if (exception == null) {
 
-							for (BMRUser user : result) {
-								if (user.getName().equals(
-										mName.getText().toString()) == true
-										&& user.getPassword().equals(
-												mPassword.getText().toString()) == true) {
-									userName = user.getName();
-									// start Activity
-									Intent i = new Intent(
-											BMRLoginActivity.this,
-											BMRMainActivity.class);
-									startActivity(i);
-									BMRLoginActivity.this.finish();
-									return;
+								for (BMRUser user : result) {
+									if (user.getName().equals(
+											mName.getText().toString()) == true
+											&& user.getPassword().equals(
+													mPassword.getText()
+															.toString()) == true) {
+										userName = user.getName();
+										// start Activity
+										Intent i = new Intent(
+												BMRLoginActivity.this,
+												BMRMainActivity.class);
+										startActivity(i);
+										BMRLoginActivity.this.finish();
+										return;
+									}
 								}
+
+								BMRUtil.createAndShowDialog(
+										"Wrong user name or password",
+										"Babay Medical Record",
+										BMRLoginActivity.this);
+
+								// close self
+								// finish();
+							} else {
+								BMRUtil.createAndShowDialog(exception, "Error",
+										BMRLoginActivity.this);
 							}
-
-							BMRUtil.createAndShowDialog(
-									"Wrong user name or password",
-									"Babay Medical Record",
-									BMRLoginActivity.this);
-
-							// close self
-							// finish();
-						} else {
-							BMRUtil.createAndShowDialog(exception, "Error",
-									BMRLoginActivity.this);
 						}
-					}
-				});
+					});
+		}
 	}
 
 	private class ProgressFilter implements ServiceFilter {

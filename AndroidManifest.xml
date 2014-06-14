@@ -18,8 +18,15 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <provider android:name=".provider.BMRProvider"
+            android:authorities="com.mwind.bmr"
+            android:exported="false">
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+        
         <activity
-            android:name="com.hackathon.babymedicalrecord.BMRLoginActivity"
+            android:name="BMRLoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>

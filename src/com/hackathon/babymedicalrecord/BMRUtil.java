@@ -17,6 +17,7 @@ public class BMRUtil {
 	public static MobileServiceTable<BMRData> mBMRData;
 	public static BMRDataParse dataparseService;
 	public static final int[] COLORS;
+	public final static boolean isUseLocalDB = true;
 
 	static {
 		int[] colors = new int[10];
@@ -32,8 +33,9 @@ public class BMRUtil {
 		colors[9] = Color.parseColor("#ffffff");
 		COLORS = colors;
 	}
-	
+
 	public native static String getServiceURL();
+
 	public native static String getAppKey();
 
 	public static MobileServiceClient getMobileService(Context context,
@@ -43,9 +45,8 @@ public class BMRUtil {
 			// Create the Mobile Service Client instance, using the provided
 			// Mobile Service URL and key
 			if (mClient == null) {
-				mClient = new MobileServiceClient(getServiceURL(),
-						getAppKey(), context)
-						.withFilter(filter);
+				mClient = new MobileServiceClient(getServiceURL(), getAppKey(),
+						context).withFilter(filter);
 			}
 		} catch (MalformedURLException e) {
 			BMRUtil.createAndShowDialog(
@@ -117,6 +118,7 @@ public class BMRUtil {
 		builder.setTitle(title);
 		builder.create().show();
 	}
+
 	/**
 	 * set bmrdata parse service
 	 * 
@@ -126,19 +128,17 @@ public class BMRUtil {
 	public static void setBMRDataService(BMRDataParse service) {
 		dataparseService = service;
 	}
-	
-	public static int [] getMonthData()
-	{
+
+	public static int[] getMonthData() {
 		return dataparseService.getMonthData();
 	}
-	
-	public static BMRSymptom[] getCurrentMonthSymptom()
-	{
+
+	public static BMRSymptom[] getCurrentMonthSymptom() {
 		return dataparseService.getCurrentMonthSymptom();
 	}
 
 	public static String getWeek(int paramInt) {
-		return new String[] { "", "Sunday", "Monday", "Tuesday", "Wenesday", "Thursday", "Friday",
-				"Saturday" }[paramInt];
+		return new String[] { "", "Sunday", "Monday", "Tuesday", "Wenesday",
+				"Thursday", "Friday", "Saturday" }[paramInt];
 	}
 }
