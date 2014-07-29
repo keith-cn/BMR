@@ -86,13 +86,13 @@ public class BMRProviderTest extends ProviderTestCase2<BMRProvider> {
 
         // Creates a URI with a pattern for user ids. The id
         // doesn't have to exist.
-        Uri listIdUri = ContentUris.withAppendedId(BMR.User.CONTENT_ID_URI_PATTERN, 1);
+        Uri listIdUri = ContentUris.withAppendedId(Uri.parse(BMR.SCHEME + BMR.AUTHORITY + BMR.User.PATH_USER_ID), 1);
         mimeType = mMockResolver.getType(listIdUri);
         assertEquals(BMR.User.CONTENT_ITEM_TYPE, mimeType);
 
         // Creates a URI with a pattern for user account. The account
         // doesn't have to exist.
-        Uri listAccountUri = Uri.withAppendedPath(BMR.User.CONTENT_ACCOUNT_URI_PATTERN, "account001");
+        Uri listAccountUri = Uri.withAppendedPath(Uri.parse(BMR.SCHEME + BMR.AUTHORITY + BMR.User.PATH_ACCOUNT), "account001");
         mimeType = mMockResolver.getType(listAccountUri);
         assertEquals(BMR.User.CONTENT_ITEM_TYPE, mimeType);
 

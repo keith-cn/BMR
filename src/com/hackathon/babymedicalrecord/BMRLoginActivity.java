@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.util.List;
 
 import com.hackathon.babymedicalrecord.BMRDataParse.MyBinder;
+import com.hackathon.babymedicalrecord.provider.BMRProviderUtil;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.NextServiceFilterCallback;
@@ -43,8 +44,6 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 
 	private BMRDataParse dataparseService;
 	private MsgReceiver msgReceiver;
-	
-	private BMRDatabaseHelper mUserDatabase;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +94,6 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 		intentFilter.addAction("com.hackathon.babymedicalrecord");
 		registerReceiver(msgReceiver, intentFilter);
 		Log.e("WXJ", "dataparseService = " + dataparseService);
-		
-		// create database helper
-		mUserDatabase = new BMRDatabaseHelper(getBaseContext());
 	}
 
 	ServiceConnection conn = new ServiceConnection() {
@@ -167,15 +163,15 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 				return;
 			}
 
-			// TODO for develop
 //			verifyUser();
-			
-			// start Activity
-			 Intent i = new Intent(
-			 BMRLoginActivity.this,
-			 BMRMainActivity.class);
-			 startActivity(i);
 
+            if (verifyUserLocally()) {
+                // start Activity
+                Intent i = new Intent(BMRLoginActivity.this, BMRMainActivity.class);
+                startActivity(i);
+            } else {
+                
+            }
 		} else if (v.getId() == R.id.register_btn) {
 			// start Activity
 			Intent i = new Intent(this, BMRUserRegisterActivity.class);
@@ -187,7 +183,23 @@ public class BMRLoginActivity extends Activity implements View.OnClickListener {
 
 	}
 
-	/**
+    private boolean verifyUserLocally() {
+        BMRProviderUtil.User.UserItem item = BMRProviderUtil.User.getItemByAccountName(
+                BMRLoginActivity.this, mName.getText().toString());
+        if (item == null) {
+            return false;
+        } else {
+            if (mPassword.getText().toString().equals(item.password)) {
+                return true;
+            } else {
+                BMRUtil.createAndShowDialog("Password is wrong.", "Baby Medical Record",
+                        BMRLoginActivity.this);
+                return false;
+            }
+        }
+    }
+
+    /**
 	 * Refresh the list with the items in the Mobile Service Table
 	 */
 	private void verifyUser() {

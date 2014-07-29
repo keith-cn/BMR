@@ -32,7 +32,7 @@ public class BMRProvider extends ContentProvider {
         sUriMatcher.addURI(BMR.AUTHORITY, BMR.User.PATH_USER, BMR_USER);
         sUriMatcher.addURI(BMR.AUTHORITY, BMR.User.PATH_USER_ID + "/#", BMR_USER_ID);
         sUriMatcher.addURI(BMR.AUTHORITY, BMR.User.PATH_ACCOUNT + "/*", BMR_USER_ACCOUNT);
-        
+
         // TODO: For other tables
     }
 
@@ -129,18 +129,35 @@ public class BMRProvider extends ContentProvider {
         Log.i(TAG, "insert(), uri:" + uri + " initialValues:" + initialValues);
         ContentValues values;
 
-        // TODO: This is just checking the user URI, need to add other check later.
+        // TODO: This is just checking the user URI, need to add other check
+        // later.
         if (sUriMatcher.match(uri) != BMR_USER) {
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
 
-        if (initialValues == null || initialValues.containsKey(BMR.User.COLUMN_NAME_ACCOUNT) == false)
+        if (initialValues == null
+                || initialValues.containsKey(BMR.User.COLUMN_NAME_ACCOUNT) == false)
             return null;
-        
+
         if (initialValues.getAsString(BMR.User.COLUMN_NAME_ACCOUNT) == null)
             return null;
 
+        // Check if the account has been created.
+        Cursor c = query(
+                uri, 
+                BMR.User.PROJECTION, 
+                BMR.User.COLUMN_NAME_ACCOUNT + "=?", 
+                new String[] {initialValues.getAsString(BMR.User.COLUMN_NAME_ACCOUNT)}, 
+                null);
+        if (c != null && c.getCount() != 0) {
+            Log.e(TAG, "The account already exists.");
+            return null;
+        }
+
         values = new ContentValues(initialValues);
+
+        // TODO: Generate other column values, like last_updated_timestamp,
+        // photo_id etc
 
         // Opens the database object in "write" mode.
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
@@ -164,9 +181,10 @@ public class BMRProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        Log.i(TAG, "query(), uri:" + uri + "projection:" + projection + " selection:" + selection + " selectionArgs:"
-                + selectionArgs);
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
+            String sortOrder) {
+        Log.i(TAG, "query(), uri:" + uri + "projection:" + projection + " selection:" + selection
+                + " selectionArgs:" + selectionArgs);
 
         // Constructs a new query builder and sets its table name
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
@@ -184,15 +202,18 @@ public class BMRProvider extends ContentProvider {
             qb.appendWhere(BMR.User._ID + "=" + uri.getPathSegments().get(1));
             break;
 
-        // If the incoming URI is for a single item identified by its account name,
-        // appends "account = <account name>" to the where clause, so that it selects
+        // If the incoming URI is for a single item identified by its account
+        // name,
+        // appends "account = <account name>" to the where clause, so that it
+        // selects
         // that single item
         case BMR_USER_ACCOUNT:
             qb.appendWhere(BMR.User.COLUMN_NAME_ACCOUNT + "=" + uri.getPathSegments().get(1));
             break;
 
         default:
-            // If the URI doesn't match any of the known patterns, throw an exception.
+            // If the URI doesn't match any of the known patterns, throw an
+            // exception.
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
 
@@ -205,7 +226,8 @@ public class BMRProvider extends ContentProvider {
             orderBy = sortOrder;
         }
 
-        // Opens the database object in "read" mode, since no writes need to be done.
+        // Opens the database object in "read" mode, since no writes need to be
+        // done.
         SQLiteDatabase db = mOpenHelper.getReadableDatabase();
 
         // Performs the query. If no problems occur trying to read the database,
@@ -215,7 +237,8 @@ public class BMRProvider extends ContentProvider {
         Cursor c = qb.query(db, projection, selection, selectionArgs, null, null, orderBy);
         Log.i(TAG, "query(), c:" + c);
 
-        // Tells the Cursor what URI to watch, so it knows when its source data changes
+        // Tells the Cursor what URI to watch, so it knows when its source data
+        // changes
         c.setNotificationUri(mContentResolver, uri);
         return c;
     }

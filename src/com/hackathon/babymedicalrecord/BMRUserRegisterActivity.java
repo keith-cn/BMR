@@ -2,11 +2,11 @@ package com.hackathon.babymedicalrecord;
 
 import static com.microsoft.windowsazure.mobileservices.MobileServiceQueryOperations.val;
 
-import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import com.hackathon.babymedicalrecord.provider.BMRProviderUtil;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.NextServiceFilterCallback;
@@ -14,26 +14,23 @@ import com.microsoft.windowsazure.mobileservices.ServiceFilter;
 import com.microsoft.windowsazure.mobileservices.ServiceFilterRequest;
 import com.microsoft.windowsazure.mobileservices.ServiceFilterResponse;
 import com.microsoft.windowsazure.mobileservices.ServiceFilterResponseCallback;
-import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
 import com.microsoft.windowsazure.mobileservices.TableQueryCallback;
 import com.umeng.analytics.MobclickAgent;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 
 public class BMRUserRegisterActivity extends Activity implements
 		View.OnClickListener {
+    private static final String TAG = "BMRUserRegisterActivity";
 
 	/**
 	 * Mobile Service Client reference
@@ -71,8 +68,8 @@ public class BMRUserRegisterActivity extends Activity implements
 		mBirthday = (Button) findViewById(R.id.reg_birthday_btn);
 		setBirthdayListener(mBirthday);
 
-		mClient = BMRUtil.getMobileService(this, new ProgressFilter());
-		mBMRUser = BMRUtil.getBMRUserTable();
+//		mClient = BMRUtil.getMobileService(this, new ProgressFilter());
+//		mBMRUser = BMRUtil.getBMRUserTable();
 
 		// mClient = BMRUtil.getMobileService(this, null);
 		// mBMRUser = BMRUtil.getBMRUserTable(this, null);
@@ -101,9 +98,9 @@ public class BMRUserRegisterActivity extends Activity implements
 	public void onClick(View v) {
 
 		if (v.getId() == R.id.reg_ok) {
-			if (mClient == null) {
-				return;
-			}
+//			if (mClient == null) {
+//				return;
+//			}
 
 			// Create a new user
 			BMRUser user = new BMRUser();
@@ -118,26 +115,40 @@ public class BMRUserRegisterActivity extends Activity implements
 			user.setBabyYear(mBabyYear);
 			user.setBabyMonth(mBabyMonth);
 			user.setBabyDay(mBabyDay);
+			
+            // Insert to local database
+            Uri result = BMRProviderUtil.User.insertItem(BMRUserRegisterActivity.this,
+                    user.getName(), user.getPassword());
+            if (result != null) {
+                BMRUtil.createAndShowDialog("insert done", "Baby Medical Record",
+                        BMRUserRegisterActivity.this);
+            } else {
+                Log.e(TAG, "Fail to insert user to database");
+                BMRUtil.createAndShowDialog("insert fail", "Baby Medical Record",
+                        BMRUserRegisterActivity.this);
+                
+                // TODO: prompt information to user
+            }
 
-			// Insert the new item
-			mBMRUser.insert(user, new TableOperationCallback<BMRUser>() {
-
-				public void onCompleted(BMRUser entity, Exception exception,
-						ServiceFilterResponse response) {
-
-					if (exception == null) {
-						BMRUtil.createAndShowDialog("insert done",
-								"Baby Medical Record",
-								BMRUserRegisterActivity.this);
-					} else {
-						BMRUtil.createAndShowDialog(exception, "Error",
-								BMRUserRegisterActivity.this);
-					}
-
-				}
-			});
-
-			refreshItemsFromTable();
+			// Insert the new item to Azure
+//			mBMRUser.insert(user, new TableOperationCallback<BMRUser>() {
+//
+//				public void onCompleted(BMRUser entity, Exception exception,
+//						ServiceFilterResponse response) {
+//
+//					if (exception == null) {
+//						BMRUtil.createAndShowDialog("insert done",
+//								"Baby Medical Record",
+//								BMRUserRegisterActivity.this);
+//					} else {
+//						BMRUtil.createAndShowDialog(exception, "Error",
+//								BMRUserRegisterActivity.this);
+//					}
+//
+//				}
+//			});
+//
+//			refreshItemsFromTable();
 		} else if (v.getId() == R.id.reg_birthday_btn) {
 		}
 

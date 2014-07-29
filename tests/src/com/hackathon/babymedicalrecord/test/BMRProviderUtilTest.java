@@ -114,8 +114,8 @@ public class BMRProviderUtilTest extends AndroidTestCase {
         // Insert subtest 2.
         // Tests that we can't insert a record whose account value already
         // exists.
-        item.account = "account002";
-        item.password = "password002"; // different contactId
+        item.account = "account001";
+        item.password = "password002"; // different password
 
         // Tries to insert a record with existed account value into the table.
         // This should fail and drop
@@ -128,12 +128,12 @@ public class BMRProviderUtilTest extends AndroidTestCase {
         }
 
         // Insert subtest 3.
-        // Tests that we can insert a record whose contactId value already
+        // Tests that we can insert a record whose password value already
         // exists.
         item.account = "account003";
-        item.password = "password003";
+        item.password = "password001";
 
-        // Tries to insert a record with existed contactId value into the table.
+        // Tries to insert a record with existed password value into the table.
         rowUri = BMRProviderUtil.User.insertItem(mContext, item.account, item.password);
         assertNotNull(rowUri);
     }
@@ -238,13 +238,11 @@ public class BMRProviderUtilTest extends AndroidTestCase {
         listTest = BMRProviderUtil.User.getAllItems(mContext);
         assertNotNull(listTest);
         assertEquals(TEST_ALEN, listTest.size());
-
+        // Test the default sort is ASC.
         int i = 0;
         for (BMRProviderUtil.User.UserItem item : listTest) {
             assertTrue(i < TEST_ALEN);
             assertTrue(i >= 0);
-            Log.e("Keith", "testGetCursorForAllItems accout: " + item.account);
-            Log.e("Keith", "testGetCursorForAllItems password: " + item.password);
             assertEquals("account00" + i, item.account);
             assertEquals("password00" + i, item.password);
             i++;

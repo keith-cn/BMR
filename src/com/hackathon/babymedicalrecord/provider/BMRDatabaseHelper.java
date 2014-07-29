@@ -24,7 +24,7 @@ public class BMRDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.i(TAG, "Create bmr database, version is: " + DATABASE_VERSION);
         db.execSQL("CREATE TABLE " + BMR.User.TABLE_NAME + " (" + 
-        		BMR.User._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + 
+        		BMR.User._ID + " INTEGER PRIMARY KEY," + // TODO: Whether or not use AUTOINCREMENT flag
         		BMR.User.COLUMN_NAME_ACCOUNT + " TEXT UNIQUE," + 
         		BMR.User.COLUMN_NAME_PASSWORD + " TEXT," +
         		BMR.User.COLUMN_NAME_PHOTO_ID + " INTEGER REFERENCES data(_id)," +
